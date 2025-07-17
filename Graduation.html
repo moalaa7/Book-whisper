@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookWhisperer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+      color: #333;
+    }
+
+    header {
+      background: #4b79a1;
+      background: linear-gradient(to right, #283e51, #4b79a1);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #f9a826;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: url('https://source.unsplash.com/1600x900/?books,library') center/cover no-repeat;
+      color: white;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: black;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .important-sentence {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      line-height: 1.5;
+    }
+
+    .blue-text {
+      color: #007BFF;
+    }
+
+    .hero button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      color: white;
+      background: #f9a826;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .hero button:hover {
+      background: #d48806;
+    }
+
+    .cta-banner {
+      background: #f9a826;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 2rem 0;
+    }
+
+    .features {
+      display: flex;
+      justify-content: space-around;
+      margin: 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .feature-card {
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: scale(1.05);
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .feature-card p {
+      padding: 0 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card a {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      color: white;
+      background: #f9a826;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .feature-card a:hover {
+      background: #d48806;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #283e51;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: #f9a826;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Media Queries for Responsiveness */
+
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header nav a {
+        font-size: 0.9rem;
+        margin: 0 0.5rem;
+      }
+
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+
+      .important-sentence {
+        font-size: 1.5rem;
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .feature-card {
+        width: 90%;
+        margin-bottom: 1rem;
+      }
+
+      .cta-banner {
+        font-size: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .important-sentence {
+        font-size: 1.2rem;
+      }
+
+      .cta-banner {
+        font-size: 0.9rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.2rem;
+      }
+
+      .feature-card p {
+        font-size: 1rem;
+      }
+
+      footer p {
+        font-size: 0.9rem;
+      }
+
+      footer a {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BookWhisperer</h1>
+    <nav>
+      <a href="#features">Features</a>
+     
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Your Gateway to Smarter Reading</h2>
+    <p class="important-sentence">
+      Unlock the world of books with <span class="blue-text">BookWhisperer</span> – personalized <span class="blue-text">recommendations</span>, <span class="blue-text">smart summaries</span>, and <span class="blue-text">your voice</span> bringing stories to life.
+    </p>
+    <button onclick="window.location.href='#features'">Get Started</button>
+  </section>
+
+  <div class="cta-banner">
+    Discover the features that make BookWhisperer your ultimate reading companion!
+  </div>
+
+  <section id="features" class="features">
+    <div class="feature-card">
+      <img src="download.jpg" alt="Recommendations">
+      <h3>Personalized Recommendations</h3>
+      <p>Explore books tailored to your interests and preferences.</p>
+      <a href="http://127.0.0.1:5003/">Explore Now</a>
+    </div>
+
+    <div class="feature-card">
+      <img src="summarize-word-written-on-wood-260nw-1863883078.webp" alt="Summaries">
+      <h3>Quick Summaries</h3>
+      <p>Preview books with concise summaries before diving in.</p>
+      <a href="summaries.html">View Summaries</a>
+    </div>
+
+    <div class="feature-card">
+      <img src="download1.jpg" alt="TTS">
+      <h3>Text-to-Speech</h3>
+      <p>Convert text to speech using your own voice!</p>
+      <a href="http://127.0.0.1:5002/">Try TTS</a>
+    </div>
+    <div class="feature-card">
+      <img src="WhatsApp Image 2025-06-10 at 00.41.46_6ec7ea45.jpg" alt="imgtopdf">
+      <h3>Image To PDF</h3>
+      <p>extract text from image </p>
+      <a href="http://127.0.0.1:5000/ocr">Extract </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BookWhisperer | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
+</body>
+</html>

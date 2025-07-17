@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Summaries - BookWhisperer</title>
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+      color: #333;
+    }
+
+    header {
+      background: #4b79a1;
+      background: linear-gradient(to right, #283e51, #4b79a1);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #f9a826;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-title p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .upload-form {
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      text-align: center;
+      display: inline-block;
+      margin: 0 auto;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .upload-form input[type="file"] {
+      display: none;
+    }
+
+    .upload-form label {
+      padding: 1rem 2rem;
+      background: #f9a826;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      min-width: 200px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .upload-form label:hover {
+      background: #d48806;
+    }
+
+    .upload-form p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 1rem;
+    }
+
+    .summary-section {
+      background: white;
+      margin-top: 2rem;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .summary-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .summary-section p {
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #283e51;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: #f9a826;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header nav a {
+        margin: 0.5rem 0;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+
+      .page-title h2 {
+        font-size: 2rem;
+      }
+
+      .upload-form {
+        padding: 1.5rem;
+        width: 90%;
+        left: 0;
+        transform: translateX(0);
+      }
+
+      .upload-form label {
+        font-size: 1rem;
+        min-width: 100%;
+        padding: 1rem;
+      }
+
+      .summary-section {
+        padding: 1.5rem;
+      }
+
+      .summary-section h3 {
+        font-size: 1.5rem;
+      }
+
+      .summary-section p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-title h2 {
+        font-size: 1.5rem;
+      }
+
+      .page-title p {
+        font-size: 1rem;
+      }
+
+      .upload-form label {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+
+      .summary-section h3 {
+        font-size: 1.3rem;
+      }
+
+      .summary-section p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+
+  <!-- PDF.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>BookWhisperer</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="page-title">
+      <h2>Quick Summaries</h2>
+      <p>Upload your PDF and get a concise summary to preview the book before reading!</p>
+    </div>
+
+    <div class="upload-form">
+      <label for="pdf-upload">Choose PDF to upload</label>
+      <input type="file" id="pdf-upload" accept=".pdf">
+      <p id="file-name">No file chosen</p>
+    </div>
+
+    <div class="summary-section" id="summary-section">
+      <h3>Summary Preview</h3>
+      <p id="summary-text">Once you upload a PDF, we will generate a concise summary of the document here.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 BookWhisperer | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    const fileInput = document.getElementById('pdf-upload');
+    const fileNameDisplay = document.getElementById('file-name');
+    const summaryText = document.getElementById('summary-text');
+  
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) {
+        fileNameDisplay.textContent = file.name;
+        uploadPDF(file);
+      }
+    });
+  
+    function uploadPDF(file) {
+      const formData = new FormData();
+      formData.append('file', file);
+  
+      // Show loading text
+      summaryText.textContent = "Generating summary, please wait...";
+  
+      fetch('http://localhost:5001/summarize', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Summary received:", data); // Debug
+        summaryText.textContent = data.summary || "No summary returned.";
+      })
+      .catch(error => {
+        console.error('Error during fetch:', error);
+        summaryText.textContent = "An error occurred while summarizing the PDF.";
+      });
+    }
+  </script>
+  
+  
+  
+</body>
+</html>
